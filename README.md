@@ -42,7 +42,7 @@ Go to Admin -> Connections and Edit "postgres_default" set this values (equivale
 - Login : airflow
 - Password : airflow
 
-For encrypted connection passwords (in Local or Celery Executor), you must have the same fernet_key. By default docker-airflow generates the fernet_key at startup, you have to set an environment variable in the docker-compose (ie: docker-compose-LocalExecutor.yml) file to set the same key accross containers. To generate a fernet_key :
+<!-- For encrypted connection passwords (in Local or Celery Executor), you must have the same fernet_key. By default docker-airflow generates the fernet_key at startup, you have to set an environment variable in the docker-compose (ie: docker-compose-LocalExecutor.yml) file to set the same key accross containers. To generate a fernet_key :
 
     docker run trungtran/docker-airflow:2.2.3 python -c "from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)"
 
@@ -54,7 +54,7 @@ The general rule is the environment variable should be named `AIRFLOW__<section>
 
 Check out the [Airflow documentation](http://airflow.readthedocs.io/en/latest/howto/set-config.html#setting-configuration-options) for more details
 
-You can also define connections via environment variables by prefixing them with `AIRFLOW_CONN_` - for example `AIRFLOW_CONN_POSTGRES_MASTER=postgres://user:password@localhost:5432/master` for a connection called "postgres_master". The value is parsed as a URI. This will work for hooks etc, but won't show up in the "Ad-hoc Query" section unless an (empty) connection is also created in the DB
+You can also define connections via environment variables by prefixing them with `AIRFLOW_CONN_` - for example `AIRFLOW_CONN_POSTGRES_MASTER=postgres://user:password@localhost:5432/master` for a connection called "postgres_master". The value is parsed as a URI. This will work for hooks etc, but won't show up in the "Ad-hoc Query" section unless an (empty) connection is also created in the DB -->
 
 ## Custom Airflow plugins
 
@@ -89,7 +89,7 @@ Easy scaling using docker-compose:
 
 This can be used to scale to a multi node setup using docker swarm.
 
-## Running other airflow commands
+<!-- ## Running other airflow commands
 
 If you want to run other airflow sub-commands, such as `list_dags` or `clear` you can do so like this:
 
@@ -97,7 +97,7 @@ If you want to run other airflow sub-commands, such as `list_dags` or `clear` yo
 
 or with your docker-compose set up like this:
 
-    docker-compose -f docker-compose-CeleryExecutor.yml run --rm webserver airflow list_dags
+    docker-compose -f docker-compose-CeleryExecutor.yml run --rm webserver airflow list_dags -->
 
 You can also use this to run a bash shell or any other command in the same environment that airflow would be run in:
 
@@ -106,10 +106,10 @@ You can also use this to run a bash shell or any other command in the same envir
 
 # Simplified SQL database configuration using PostgreSQL
 
-If the executor type is set to anything else than *SequentialExecutor* you'll need an SQL database.
+<!-- If the executor type is set to anything else than *SequentialExecutor* you'll need an SQL database.
 Here is a list of PostgreSQL configuration variables and their default values. They're used to compute
 the `AIRFLOW__CORE__SQL_ALCHEMY_CONN` and `AIRFLOW__CELERY__RESULT_BACKEND` variables when needed for you
-if you don't provide them explicitly:
+if you don't provide them explicitly: -->
 
 | Variable            | Default value |  Role                |
 |---------------------|---------------|----------------------|
@@ -120,7 +120,7 @@ if you don't provide them explicitly:
 | `POSTGRES_DB`       | `airflow`     | Database name        |
 | `POSTGRES_EXTRAS`   | empty         | Extras parameters    |
 
-You can also use those variables to adapt your compose file to match an existing PostgreSQL instance managed elsewhere.
+<!-- You can also use those variables to adapt your compose file to match an existing PostgreSQL instance managed elsewhere.
 
 Please refer to the Airflow documentation to understand the use of extras parameters, for example in order to configure
 a connection that uses TLS encryption.
@@ -133,12 +133,12 @@ Here's an important thing to consider:
 Therefore you must provide extras parameters URL-encoded, starting with a leading `?`. For example:
 
     POSTGRES_EXTRAS="?sslmode=verify-full&sslrootcert=%2Fetc%2Fssl%2Fcerts%2Fca-certificates.crt"
-
+ -->
 # Simplified Celery broker configuration using Redis
 
-If the executor type is set to *CeleryExecutor* you'll need a Celery broker. Here is a list of Redis configuration variables
+<!-- If the executor type is set to *CeleryExecutor* you'll need a Celery broker. Here is a list of Redis configuration variables
 and their default values. They're used to compute the `AIRFLOW__CELERY__BROKER_URL` variable for you if you don't provide
-it explicitly:
+it explicitly: -->
 
 | Variable          | Default value | Role                           |
 |-------------------|---------------|--------------------------------|
