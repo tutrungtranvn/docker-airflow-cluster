@@ -1,14 +1,14 @@
 ## Installation
 
 Up to this moment, there is no public image `trungtran/docker-airflow:2.2.3`, so we have to build it. After cloning this repo, you may do
-
+<!-- 
     docker build -t trungtran/docker-airflow:2.2.3 .
 
 
 ## Build
 
 Optionally install [Extra Airflow Packages](https://airflow.incubator.apache.org/installation.html#extra-package) and/or python dependencies at build time :
-
+ -->
     docker build --rm --build-arg AIRFLOW_DEPS="datadog,dask" --build-arg PYTHON_DEPS="flask_oauthlib>=0.9" -t trungtran/docker-airflow:2.2.3 .
 
 ## Usage
